@@ -1,0 +1,12 @@
+button {
+    padding: 8px 15px;
+}
+button:first-of-type {
+    margin-right: 10px;
+}
+.disabled {
+    pointer-events: none;
+}
+.enabled {
+    cursor: pointer;
+}
