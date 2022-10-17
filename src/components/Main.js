@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
-import Buttons from './Buttons/Buttons';
-import Counter from './Counter/Counter';
-import Form from './Form/Form';
+import { Fragment, useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./Main.css";
+import Navbar from './Navbar/Navbar';
+import Products from './Products/Products';
+import Counter from './Counter/Counter';
+import ProductDetails from './ProductDetails/ProductDetails';
+import Cart from './Cart/Cart';
 
 function Main() {
-    const [counter, setCounter] = useState(0);
-    const [input, setInput] = useState("");
+  const [count, setCount] = useState(0);
+  const handleClick = (e) => {
+    setCount((prev) => prev + 1)
+  }
   return (
-    <div className='main'>
-        <Form input={input} setInput={setInput}/>
-        <Counter counter={counter}/>
-        <Buttons setCounter={setCounter} input={input} counter={counter}/>
-    </div>
+    <Fragment>
+      <BrowserRouter>
+        <Navbar count={count}/>
+        <Routes>
+          <Route path="/" element={<Products count={count} setCount={handleClick}/>}/>
+          <Route path="/counter" element={<Counter />}/>
+          <Route path="/productDetails/:id" element={<ProductDetails setCount={handleClick}/>}/>
+          <Route path="/cart" element={<Cart count={count}/>}/>
+        </Routes>
+      </BrowserRouter>
+    </Fragment>
   )
 }
 
