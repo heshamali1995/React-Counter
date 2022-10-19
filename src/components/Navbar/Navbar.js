@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaCartPlus } from 'react-icons/fa';
-
+import { FaHeart } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import "./Navbar.css";
 
-function Navbar({count}) {
+function Navbar() {
+    const globalStore = useSelector((state) => state.cartCounter.counter);
   return (
       <nav className="navbar navbar-expand-lg bg-light">
           <div className="container">
@@ -13,16 +15,18 @@ function Navbar({count}) {
               </button>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                      <li className="nav-item">
-                          <Link className="nav-link" to="/counter">Counter</Link>
-                      </li>
-                      <li className="nav-item">
-                          <Link className="nav-link" to="/cart">
-                            <FaCartPlus className="icon"/>
-                            <span className="ms-3">{count}</span>
+                      <li className="nav-item me-3">
+                          <Link className="nav-link cart-item" to="/cart">
+                            <FaCartPlus className="cart-icon"/>
+                            <span className="ms-3">{globalStore}</span>
                           </Link>
                       </li>
-                      <li className="nav-item dropdown">
+                      <li className="nav-item me-3">
+                          <Link className="nav-link" to="/favorites">
+                            <FaHeart className="heart-icon"/>
+                          </Link>
+                      </li>
+                      <li className="nav-item dropdown me-3">
                           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Dropdown
                           </a>

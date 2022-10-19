@@ -1,26 +1,25 @@
-import "./Cart.css";
+import "./Favorites.css";
 import { useSelector, useDispatch } from "react-redux";
-import { FaCartPlus, FaTrash } from 'react-icons/fa';
-import { removeAll, removeFromCart } from "../../redux/cartSlice/CartState";
-
+import { FaHeart, FaTrash } from "react-icons/fa";
+import { removeAll, removeFromFavorites } from "../../redux/favoriteSlice/FavoriteState";
 
 function Cart() {
-  const cartList = useSelector((state) => state.cartCounter.cartList);
+  const favoriteList = useSelector((state) => state.favoriteCounter.favoriteList);
   const dispatch = useDispatch();
-  const removeItem = (prod) => {
-    dispatch(removeFromCart(prod));
+  const removeFav = (prod) => {
+    dispatch(removeFromFavorites(prod))
   }
-  const emptyCart = () => {
-    dispatch(removeAll())
+  const emptyFavoriteList = () => {
+    dispatch(removeAll());
   }
   return (
     <div className="cart py-5">
         <div className="container">
-            {Object.keys(cartList).length == 0 ? (
-                <div className="text-center pt-5">
-                  <h3 className="mb-5">Cart Is Empty</h3>
-                  <FaCartPlus className="icon-cart"/>
-                </div>
+            {Object.keys(favoriteList).length == 0 ? (
+              <div className="text-center pt-5">
+                <h3 className="mb-5">Favorites Is Empty</h3>
+                <FaHeart className="icon-heart"/>
+              </div>
             ) : (
               <table className="p-3 text-center mb-5">
                 <thead>
@@ -31,10 +30,10 @@ function Cart() {
                     <th>Category</th>
                     <th>Price</th>
                     <th>Rating</th>
-                    <th>Remove From Cart</th>
+                    <th>Remove From Favorites</th>
                   </tr>
                 </thead>
-                {cartList.map((item, index) => {
+                {favoriteList.map((item, index) => {
                   return (
                     <tbody key={item.id}>
                       <tr>
@@ -47,7 +46,7 @@ function Cart() {
                         <td>{item.price} EGP</td>
                         <td>{item.rating.rate} <span className="star-icon">&#9733;</span></td>
                         <td>
-                          <span onClick={() => removeItem(item)}>
+                          <span onClick={() => removeFav(item)}>
                             <FaTrash className="trash-icon"/>
                           </span>
                         </td>
@@ -58,8 +57,7 @@ function Cart() {
               </table>
             )}
             <div className="d-flex justify-content-around">
-              <button style={{display: cartList == 0 ? "none" : "block"}} className="btn btn-danger" onClick={emptyCart}>Empty Your Cart</button>
-              <h3 style={{display: cartList == 0 ? "none" : "block"}}>Total Price: {cartList.reduce((acc, item) => acc += item.price, 0)}</h3>
+              <button style={{display: favoriteList == 0 ? "none" : "block"}} className="btn btn-danger" onClick={emptyFavoriteList}>Empty Your Favorite List</button>
             </div>
         </div>
     </div>

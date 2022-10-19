@@ -1,3 +1,12 @@
-.icon {
-    color: #000;
+.heart-icon,
+.cart-icon {
+    font-size: 20px;
+}
+
+.heart-icon:hover {
+    color: rgb(235, 48, 48);
+}
+
+.cart-item:hover {
+    color: green;
 }

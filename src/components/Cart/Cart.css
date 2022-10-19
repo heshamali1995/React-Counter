@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+}
+tr {
+    padding: 20px;
+}
+th,
+td {
+    border: 1px solid #000;
+}
+.item-img {
+    width: 80px;
+    height: 80px;
+}
+.star-icon {
+    color: yellow;
+    font-size: 20px;
+}
+.icon-cart {
+    font-size: 42px;
+    color: green;
+}
+.trash-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: red;
+}
