@@ -6,8 +6,8 @@ const initialState = {
     cartList: [],
     itemsPrices: [],
     totalPrice: 0,
-    counter: 0
-/*     cartButtonClicked: false */
+    counter: 0,
+    cartButtonClicked: false
 }
 
 // Cart Reducers
@@ -18,7 +18,7 @@ const cartSlice = createSlice({
     reducers: {
         incrementCart: (state, action) => {
             state.counter = state.counter + 1;
-/*             state.cartButtonClicked = true; */
+            state.cartButtonClicked = true;
             state.cartList.push(action.payload);
         },
         removeFromCart: (state, action) => {

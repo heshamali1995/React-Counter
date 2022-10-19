@@ -7,6 +7,7 @@ import Counter from './Counter/Counter';
 import ProductDetails from './ProductDetails/ProductDetails';
 import Cart from './Cart/Cart';
 import Favorites from "./Favorites/Favorites";
+import Sign from './Sign/Sign';
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
           <Route path="/productDetails/:id" element={<ProductDetails/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/favorites" element={<Favorites />}/>
+          <Route path="/sign" element={<Sign />}/>
         </Routes>
       </BrowserRouter>
     </Fragment>
