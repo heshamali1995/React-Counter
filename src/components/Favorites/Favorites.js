@@ -1,9 +1,11 @@
-import "./Favorites.css";
 import { useSelector, useDispatch } from "react-redux";
 import { FaHeart, FaTrash } from "react-icons/fa";
-import { removeAll, removeFromFavorites } from "../../redux/favoriteSlice/FavoriteState";
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import { removeFromFavorites, removeAll } from "../../redux/FavoriteSlice/FavoriteSlice";
+import "./Favorites.css";
 
-function Cart() {
+function Favorites() {
   const favoriteList = useSelector((state) => state.favoriteCounter.favoriteList);
   const dispatch = useDispatch();
   const removeFav = (prod) => {
@@ -18,7 +20,12 @@ function Cart() {
             {Object.keys(favoriteList).length == 0 ? (
               <div className="text-center pt-5">
                 <h3 className="mb-5">Favorites Is Empty</h3>
-                <FaHeart className="icon-heart"/>
+                <FaHeart className="empty-icon-heart mb-5"/>
+                <Button variant="danger" className="d-block m-auto" size="lg">
+                  <Link to="/" className="text-decoration-none text-white">
+                    Add Items To Your Favorite List!
+                  </Link>
+                </Button>
               </div>
             ) : (
               <table className="p-3 text-center mb-5">
@@ -64,4 +71,4 @@ function Cart() {
   )
 }
 
-export default Cart;
+export default Favorites;

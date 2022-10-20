@@ -4,8 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     favorite: 0,
-    favoriteList: [],
-    favoriteButtonClicked: false
+    favoriteList: []
 }
 
 // Favorites Reducers
@@ -15,12 +14,11 @@ const favoriteSlice = createSlice({
     initialState,
     reducers: {
         incrementFavorites: (state, action) => {
-            state.favorite = state.favorite + 1;
-            state.favoriteButtonClicked = true;
+            state.favorite += 1;
             state.favoriteList.push(action.payload)
         },
         removeFromFavorites: (state, action) => {
-            state.favorite = state.favorite - 1;
+            state.favorite -= 1;
             state.favoriteList.map((prod, i) => {
                 if (action.payload.id === prod.id) {
                   state.favoriteList.splice(i, 1);
@@ -29,6 +27,7 @@ const favoriteSlice = createSlice({
         },
         removeAll: (state, action) => {
             state.favoriteList = [];
+            state.favorite = 0;
         }
     }
 });

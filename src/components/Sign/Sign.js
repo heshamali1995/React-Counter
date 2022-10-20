@@ -15,7 +15,7 @@ function Sign() {
         { value: 2, label: "Female" }
     ]
     return (
-        <div className="container d-flex justify-content-center mt-5">
+        <div className="container d-flex justify-content-center py-5">
             <Form onSubmit={handleSubmit(submitSignUp)}>
                 <Form.Group className="mb-3" controlId="name">
                     <Form.Label>First Name</Form.Label>

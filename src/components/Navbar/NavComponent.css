@@ -1,9 +1,9 @@
-.heart-icon,
+.icon-heart,
 .cart-icon {
     font-size: 20px;
 }
 
-.heart-icon:hover {
+.heart-item:hover {
     color: rgb(235, 48, 48);
 }
 
